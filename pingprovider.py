@@ -19,7 +19,7 @@ providers = {
                 required=False)
 def cli(isp, minutes, outfile):
     """This script pings your ISP and logs a response time every second."""
-    dns_to_ping = isp[isp.lower()] if isp.lower() in providers else isp
+    dns_to_ping = providers[isp.lower()] if isp.lower() in providers else isp
     outfile.write(f"Time,Response_Time(ms),Start:{datetime.datetime.now()},DNS:{dns_to_ping}\n")
     counter = 0
     while(counter != minutes*60):
